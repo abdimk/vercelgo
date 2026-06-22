@@ -3,3 +3,9 @@ build:
 
 run:build
 	@bin/main
+
+vercel:
+	@echo "Deploy to Vercel: vercel --prod"
+
+all: build
+
