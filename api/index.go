@@ -1,12 +1,11 @@
 package handler
 
 import (
+	"encoding/json"
 	"net/http"
 	"time"
 
 	"github.com/abdimk/vercelgo/schema"
-	"github.com/gofiber/fiber/v3"
-	"github.com/gofiber/fiber/v3/middleware/adaptor"
 )
 
 // Handler is the entry point Vercel calls for serverless functions.
@@ -30,12 +29,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		Expression: "Smile",
 	}
 
-	app := fiber.New()
-	app.Get("/", func(c fiber.Ctx) error {
-		return c.JSON(emotion)
-	})
-
-	// Ensure Fiber receives the correct request URI for routing
-	r.RequestURI = r.URL.String()
-	adaptor.FiberApp(app).ServeHTTP(w, r)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(emotion)
 }
