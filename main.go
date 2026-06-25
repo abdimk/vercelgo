@@ -11,11 +11,11 @@ import (
 
 func main() {
 	emotion := schema.Emotions{
-		Name:      "Happiness",
+		Name:      "Lost",
 		Intensity: 0.8,
 		Valence:   1.0,
 		Duration:  30 * time.Minute,
-		Trigger:   "Finished a project",
+		Trigger:   "Working on the payment API",
 		StartTime: time.Now(),
 		Target:    "Myself",
 		PhysicalEffects: []string{
@@ -41,4 +41,4 @@ func main() {
 	})
 
 	log.Fatal(app.Listen(":" + port))
-}
+}
